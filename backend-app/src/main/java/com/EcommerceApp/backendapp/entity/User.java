@@ -3,7 +3,7 @@ package com.EcommerceApp.backendapp.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="user")
+@Table(name="E_user")
 public class User {
     @Id
     @Column(name = "user_id",length = 10)
