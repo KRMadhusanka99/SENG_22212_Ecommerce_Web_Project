@@ -6,11 +6,11 @@ import jakarta.persistence.*;
 @Table(name="user")
 public class User {
     @Id
-    @Column(name = "user_id",length = 10)
+    @Column(name = "userId", length = 10)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int userId;
 
-    @Column(name = "user_name", length = 100, nullable = false)
+    @Column(name = "userName", length = 100, nullable = false)
     private String userName;
 
     @Column(name = "email", length = 50, nullable = false, unique = true)
@@ -23,11 +23,6 @@ public class User {
     }
 
     public User() {
-    }
-
-    public User(String userName, String email) {
-        this.userName = userName;
-        this.email = email;
     }
 
     public int getUserId() {
@@ -61,5 +56,10 @@ public class User {
                 ", userName='" + userName + '\'' +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    public User(String userName, String email) {
+        this.userName = userName;
+        this.email = email;
     }
 }

@@ -16,8 +16,8 @@ public class UserController {
 
     @PutMapping(path = "/reg-user")
     public String reqUser(@RequestBody UserRegDTO userRegDTO){
-        String mg = userService.userReq(userRegDTO);
-        return "";
+        String msg = userService.userReq(userRegDTO);
+        return msg;
 
     }
 }
