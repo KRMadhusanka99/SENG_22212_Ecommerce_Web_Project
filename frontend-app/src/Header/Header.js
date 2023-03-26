@@ -7,7 +7,6 @@ import {useStateValue} from '../StateProvider';
 //import {auth} from '../firebase'
 import iconpic from '../Picture/icon.png'
 
-
 function Header() {
 
   const [{basket,loggedinuser}, dispatch] = useStateValue();
