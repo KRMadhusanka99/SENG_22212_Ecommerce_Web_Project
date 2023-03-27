@@ -171,4 +171,8 @@ public class ProductService {
         }
         return out.toString(StandardCharsets.ISO_8859_1.name());
     }
+
+    public Product getProductById(Long id) {
+        return productRepo.findById(id).get();
+    }
 }
