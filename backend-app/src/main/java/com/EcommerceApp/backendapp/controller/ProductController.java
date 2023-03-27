@@ -37,9 +37,13 @@ public class ProductController {
     public String saveProduct(@RequestParam("file") MultipartFile file,
                               @RequestParam("pname") String name,
                               @RequestParam("price") double price,
-                              @RequestParam("desc") String desc)
+                              @RequestParam("desc") String desc,
+                              @RequestParam("quantity") int quantity,
+                              @RequestParam("brand") String brand,
+                              @RequestParam("categories") String categories
+                              )
     {
-        productService.saveProductToDB(file, name, desc, price);
+        productService.saveProductToDB(file, name, desc,quantity, price,brand,categories);
         return "listProducts ";
     }
     // delete product by id
@@ -82,6 +86,12 @@ public class ProductController {
     @PostMapping("/Admin/addCategory")
     public String addCategory(@ModelAttribute Category category , Model model) {
         productService.saveCategory(category);
+        return "redirect:/Admin/product";
+    }
+    @PostMapping("/Admin/addPictureToP")
+    public String addImageToProduct(@RequestParam("file") MultipartFile file,
+                                    @RequestParam("product_id") Long id ) {
+        productService.addImageToProduct(file,id);
         return "redirect:/Admin/product";
     }
 }
