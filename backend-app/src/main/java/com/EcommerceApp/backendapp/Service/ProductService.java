@@ -1,6 +1,8 @@
 package com.EcommerceApp.backendapp.Service;
 
+import com.EcommerceApp.backendapp.DTO.CategoryRepository;
 import com.EcommerceApp.backendapp.DTO.ProductRepository;
+import com.EcommerceApp.backendapp.entity.Category;
 import com.EcommerceApp.backendapp.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,28 +17,31 @@ import java.util.List;
 public class ProductService {
     @Autowired
     private ProductRepository productRepo;
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     public void  saveProductToDB(MultipartFile file, String name, String description
             , double price)
     {
-        Product p = new Product();
+        Product product = new Product();
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         if(fileName.contains(".."))
         {
             System.out.println("not a a valid file");
         }
         try {
-            p.setImage(Base64.getEncoder().encodeToString(file.getBytes()));
+            product.setImage(Base64.getEncoder().encodeToString(file.getBytes()));//convert string repersentation
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace();//todo change this
         }
-        p.setDescription(description);
+        product.setDescription(description);
 
-        p.setName(name);
-        p.setPrice(price);
+        product.setName(name);
+        product.setPrice(price);
 
-        productRepo.save(p);
+        productRepo.save(product);
     }
+
     public List<Product> getAllProduct()
     {
         return productRepo.findAll();
@@ -65,5 +70,13 @@ public class ProductService {
         p = productRepo.findById(id).get();
         p.setPrice( price);
         productRepo.save(p);
+    }
+    public Category saveCategory(Category category) {
+        return categoryRepository.save(category);
+    }
+
+    public List<Category> getAllCategories() {
+
+        return categoryRepository.findAll();
     }
 }

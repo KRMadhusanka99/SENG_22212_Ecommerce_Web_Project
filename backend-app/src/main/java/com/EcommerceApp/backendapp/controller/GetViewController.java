@@ -10,20 +10,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
-
+// class for single page web application
 @Controller
 public class GetViewController {
     @Autowired
     private ProductRepository productRepository;
 
-    @RequestMapping(value = "/addProduct",method = RequestMethod.GET)
-    @ResponseBody
+    @RequestMapping(value = "/addProduct",method = RequestMethod.GET)//url(value): in api/ajaxfetch.js
+    @ResponseBody//return html page
     public ModelAndView returnAddProduct()
     {
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("/add");
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("addProduct");//html file name add product form page
 
-        return mv;
+        return modelAndView;
 
     }
 
@@ -31,11 +31,11 @@ public class GetViewController {
     @ResponseBody
     public ModelAndView returnListProduct()
     {
-        ModelAndView mv = new ModelAndView();
+        ModelAndView modelAndView = new ModelAndView();
         List<Product> products = productRepository.findAll();
-        mv.setViewName("/list");
-        mv.addObject("products", products);
-        return mv;
+        modelAndView.setViewName("/list");
+        modelAndView.addObject("products", products);// html products list page
+        return modelAndView;
 
     }
 }
