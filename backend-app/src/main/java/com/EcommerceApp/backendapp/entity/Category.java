@@ -15,12 +15,15 @@ public class Category {
     @Transient
     private int productsNumber;
     public Set<Product> getProducts() {
+
         return products;
     }
     public void setProducts(Set<Product> products) {
+
         this.products = products;
     }
     public int getProductsNumber() {
+
         return this.products.size();
     }
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "categories")
