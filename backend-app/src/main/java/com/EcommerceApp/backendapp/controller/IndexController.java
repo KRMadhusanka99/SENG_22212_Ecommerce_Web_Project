@@ -23,5 +23,14 @@ public class IndexController {
         return "index";
     }
 
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView search(@RequestParam("value") String value) {
+        ModelAndView modelAndView = new ModelAndView();;
+        modelAndView.setViewName("fragments/searchFragment");// todo change name of the search file
+        List<Product> products = productService.searchProductByNameLike(value);
+        modelAndView.addObject("products", products);
+        return modelAndView;
+    }
 
 }

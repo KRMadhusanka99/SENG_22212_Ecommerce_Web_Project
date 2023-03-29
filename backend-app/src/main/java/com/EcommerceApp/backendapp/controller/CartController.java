@@ -40,7 +40,7 @@ public class CartController {
     // Shopping cart functions...
 
     @GetMapping("/shoppingCart")
-    public String showShoopingCartView(HttpServletRequest request, Model model) {
+    public String showShoppingCartView(HttpServletRequest request, Model model) {
 
         return "shoppingCart";
     }

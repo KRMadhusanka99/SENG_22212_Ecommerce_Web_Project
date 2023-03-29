@@ -22,9 +22,40 @@ public class ShoppingCart {
     @Transient
     private int itemsNumber;
 
+    public Set<CartItem> getCartItem() {
+        return cartItem;
+    }
+
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER )
     private Set<CartItem> items = new HashSet<CartItem>();
     private String sessionToken;
+
+    public void setCartItem(Set<CartItem> cartItem) {
+        this.cartItem = cartItem;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL)//, mappedBy = "CartItem"
+    private Set<CartItem> cartItem;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    private User user;
+
+    public void setTotalPrice(Double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public void setItemsNumber(int itemsNumber) {
+        this.itemsNumber = itemsNumber;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public ShoppingCart() {
     }

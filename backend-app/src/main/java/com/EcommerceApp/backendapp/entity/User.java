@@ -70,5 +70,11 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    @OneToOne(mappedBy = "user")
+    private ShoppingCart shoppingCart;
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders;
+
 }
 

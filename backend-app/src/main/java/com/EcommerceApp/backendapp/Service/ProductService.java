@@ -175,4 +175,16 @@ public class ProductService {
     public Product getProductById(Long id) {
         return productRepo.findById(id).get();
     }
+
+    public List<Product> searchProductByNameLike(String value) {
+        return productRepo.findByNameContainingIgnoreCase(value);
+    }
+
+
+
+    public List<String> getAllBrands() {
+        // TODO Auto-generated method stub
+        return productRepo.findAllBrandsDistincts();
+    }
+
 }
