@@ -42,7 +42,7 @@ function Product({id,title,image,price,rating}){
 
             </div>
             <img src={image} alt="pic"/>
-            <button onClick={addToBasket}>Add to Basket</button>
+            <button1 onClick={addToBasket}>Add to Basket</button1>
 
         </div>         
 

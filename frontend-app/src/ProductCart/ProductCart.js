@@ -20,7 +20,7 @@ function ProductCart({id,title,image,price,rating}){
                 <p className="productcart-title">{title}</p>
                 <p className="productcart-price">${price}</p>
 
-            <div className="productcart-rating">
+           {/*} <div className="productcart-rating">
                 {
                     Array(rating)
                     .fill()
@@ -28,7 +28,7 @@ function ProductCart({id,title,image,price,rating}){
                         <span>*</span>
                     ))
                 }
-            </div>
+            </div>*/}
             <div className="additem">
                 
             </div>

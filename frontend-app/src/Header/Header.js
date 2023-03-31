@@ -4,20 +4,18 @@ import {FaSearch} from 'react-icons/fa';
 import {FaShoppingBasket} from 'react-icons/fa';
 import {Link} from 'react-router-dom';
 import {useStateValue} from '../StateProvider';
-//import {auth} from '../firebase'
+import {auth} from '../firebase'
 import iconpic from '../Picture/icon.png'
-import logopic from '../Picture/logo.png'
-
-
 
 function Header() {
 
   const [{basket,loggedinuser}, dispatch] = useStateValue();
 
-  console.log("my basket ",basket)
+  
+  //console.log("my basket ",basket)
   const logoutUser =()=>{
     if(loggedinuser){
-        
+        auth.signOut();
     }
   }
 

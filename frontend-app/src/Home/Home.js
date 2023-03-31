@@ -9,7 +9,6 @@ import ProductPic5 from '../Picture/6.jpg';
 import ProductPic6 from '../Picture/7.jpg';
 import ProductPic7 from '../Picture/8.jpg';
 import ProductPic8 from '../Picture/9.jpg';
-
 import Product from '../Product/Product'
 
 function Home(){
