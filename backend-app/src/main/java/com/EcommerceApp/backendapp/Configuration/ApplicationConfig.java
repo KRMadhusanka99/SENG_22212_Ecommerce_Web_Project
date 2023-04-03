@@ -1,6 +1,6 @@
 package com.EcommerceApp.backendapp.Configuration;
 
-import com.EcommerceApp.backendapp.DTO.UserRepository;
+import com.EcommerceApp.backendapp.Repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

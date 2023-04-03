@@ -1,6 +1,6 @@
-package com.EcommerceApp.backendapp.DTO;
+package com.EcommerceApp.backendapp.Repository;
 
-import com.EcommerceApp.backendapp.entity.Token.Token;
+import com.EcommerceApp.backendapp.Entity.Token.Token;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

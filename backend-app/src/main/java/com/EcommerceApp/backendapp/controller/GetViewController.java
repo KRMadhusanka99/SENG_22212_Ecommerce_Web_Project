@@ -1,7 +1,7 @@
 package com.EcommerceApp.backendapp.controller;
 
-import com.EcommerceApp.backendapp.DTO.ProductRepository;
-import com.EcommerceApp.backendapp.entity.Product;
+import com.EcommerceApp.backendapp.Repository.ProductRepository;
+import com.EcommerceApp.backendapp.Entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

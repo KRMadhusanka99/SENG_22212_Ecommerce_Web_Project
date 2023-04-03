@@ -1,16 +1,16 @@
 package com.EcommerceApp.backendapp.Service;
 
-import com.EcommerceApp.backendapp.DTO.TokenRepository;
-import com.EcommerceApp.backendapp.DTO.UserRepository;
+import com.EcommerceApp.backendapp.Repository.TokenRepository;
+import com.EcommerceApp.backendapp.Repository.UserRepository;
 import com.EcommerceApp.backendapp.Email.EmailSender;
 import com.EcommerceApp.backendapp.Email.EmailValidator;
 import com.EcommerceApp.backendapp.RequestandResponse.Request.AuthenticationRequest;
 import com.EcommerceApp.backendapp.RequestandResponse.Request.RegisterRequest;
 import com.EcommerceApp.backendapp.RequestandResponse.Response.AuthenticationResponse;
-import com.EcommerceApp.backendapp.entity.Token.Token;
-import com.EcommerceApp.backendapp.entity.Token.TokenType;
-import com.EcommerceApp.backendapp.entity.User;
-import com.EcommerceApp.backendapp.entity.UserRole;
+import com.EcommerceApp.backendapp.Entity.Token.Token;
+import com.EcommerceApp.backendapp.Entity.Token.TokenType;
+import com.EcommerceApp.backendapp.Entity.User;
+import com.EcommerceApp.backendapp.Entity.UserRole;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
