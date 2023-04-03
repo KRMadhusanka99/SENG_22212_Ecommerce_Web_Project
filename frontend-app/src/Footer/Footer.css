@@ -1,0 +1,34 @@
+.footer-area{
+    background-color: rgb(1, 1, 79);
+    width: 100%;
+    min-height: 200px;
+    color: whitesmoke;  
+}
+
+.footer-area-link{
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    cursor: pointer;
+}
+
+.footer-area-link-area > span{
+    
+    margin-top:50px;
+    margin-bottom: -20px;
+    font-size: large;
+
+}
+
+.footer-area-link-area > p{
+    margin-top:20px;
+    margin-bottom: -20px;
+}
+
+.footer-end{
+    margin-top: 50px;
+    text-align: center;
+    font-weight: bold;
+}
