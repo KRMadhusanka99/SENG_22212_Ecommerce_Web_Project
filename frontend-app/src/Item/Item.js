@@ -117,7 +117,6 @@ function Item(){
 
                 />
                 </div>
-                
                 <Footer/>
         </div>
      
