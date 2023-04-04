@@ -1,4 +1,4 @@
-package com.EcommerceApp.backendapp.Service.Implimentation;
+package com.EcommerceApp.backendapp.Service.Implementation;
 
 import com.EcommerceApp.backendapp.Entity.Category;
 import com.EcommerceApp.backendapp.Entity.Product;
@@ -6,10 +6,7 @@ import com.EcommerceApp.backendapp.Repository.CategoryRepository;
 import com.EcommerceApp.backendapp.Repository.ProductRepository;
 import com.EcommerceApp.backendapp.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 

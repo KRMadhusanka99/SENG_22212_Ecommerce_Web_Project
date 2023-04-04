@@ -1,4 +1,4 @@
-package com.EcommerceApp.backendapp.controller;
+package com.EcommerceApp.backendapp.Controller;
 
 import com.EcommerceApp.backendapp.Repository.ProductRepository;
 import com.EcommerceApp.backendapp.Entity.Product;

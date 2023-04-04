@@ -79,14 +79,6 @@ public class Product {
         this.category = category;
     }
 
-    public Boolean getAvailable() {
-        return available;
-    }
-
-    public void setAvailable(Boolean available) {
-        this.available = available;
-    }
-
     @Column(nullable = false)
     private Boolean available;
 

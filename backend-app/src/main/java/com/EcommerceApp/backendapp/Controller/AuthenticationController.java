@@ -1,4 +1,4 @@
-package com.EcommerceApp.backendapp.controller;
+package com.EcommerceApp.backendapp.Controller;
 
 import com.EcommerceApp.backendapp.RequestandResponse.Request.AuthenticationRequest;
 import com.EcommerceApp.backendapp.RequestandResponse.Request.RegisterRequest;
