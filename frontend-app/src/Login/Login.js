@@ -57,7 +57,8 @@ function Login(){
           </div>
         
         <p>By login, you agree to INNOVA's Terms and Conditions</p>
-        <button onClick={signupuser} className='login-registration'>SignUp</button>
+       {/*} <button onClick={signupuser} className='login-registration'>SignUp</button>*/}
+        <Link to="/signup"><button>Create Account</button></Link>
         </div>
        </div>
        

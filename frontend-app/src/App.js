@@ -9,6 +9,8 @@ import Cart from './Cart/Cart';
 import Footer from './Footer/Footer'
 import Navbar from './Navbar/Navabar'
 import Item from './Item/Item'
+import SignUp from './SignUp/SignUp'
+import Contact from './Contact/Contact'
 import{auth} from './firebase';
 import { useStateValue } from './StateProvider';
 import { useEffect } from 'react';
@@ -32,6 +34,7 @@ function App() {
           user: null
         })
        }
+       
     })
 
   return() => {
@@ -47,6 +50,8 @@ function App() {
             <Route path="/cart" element={<><Header/><Cart/></>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/item" element={<Item/>}/>
+            <Route path="/signup" element={<SignUp/>}/>
+            <Route path="/contact" element={<Contact/>}/>
             <Route path="/" element={<><Header/><Navbar/><Home/><Footer/></>}/> 
           </Routes>
     </div>

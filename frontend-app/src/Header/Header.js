@@ -42,7 +42,7 @@ function Header() {
                      <Link to='/'>Home</Link>
                      <Link to={"/item" }>Product</Link>
                      <Link>Customer Service</Link>
-                     <Link>Contact Us</Link>
+                     <Link to={"/contact" }>Contact Us</Link>
                     
 
             </div>
