@@ -1,10 +1,11 @@
 import React from "react";
-import './Checkout.css'
+import './Cart.css'
 import Subtotal from '../Subtotal/Subtotal';
 import {useStateValue} from '../StateProvider';
 import ProductCart from '../ProductCart/ProductCart';
+import Footer from '../Footer/Footer';
 
-function Checkout(){
+function Cart(){
 
     const[{basket}] = useStateValue();
     
@@ -28,7 +29,7 @@ function Checkout(){
                                       title={item.title}
                                       image={item.image}
                                       price={item.price}
-                                      rating={item.rating}
+                                  
                                     />
                                 ))
                             }
@@ -44,10 +45,12 @@ function Checkout(){
                     </div>
                 )
             }
-
+            <div className="pos">
+                <Footer/>
+            </div>
         </div>
         
     )
 }
 
-export default Checkout;
+export default Cart;

@@ -1,5 +1,4 @@
 import React from "react";
-import HomePic from '../Picture/home.png';
 import ProductPic from '../Picture/1.jfif';
 import ProductPic1 from '../Picture/4.jpg';
 import ProductPic2 from '../Picture/5.jfif';
@@ -9,15 +8,23 @@ import ProductPic5 from '../Picture/6.jpg';
 import ProductPic6 from '../Picture/7.jpg';
 import ProductPic7 from '../Picture/8.jpg';
 import ProductPic8 from '../Picture/9.jpg';
+import ProductPic9 from '../Picture/10.jpg';
+import ProductPic10 from '../Picture/11.jpg';
+import ProductPic11 from '../Picture/12.jpg';
 import Product from '../Product/Product'
+import Header from '../Header/Header'
+import Footer from '../Footer/Footer'
+import bgPic from '../Picture/bg2.jpg';
 
-function Home(){
+function Item(){
     return(
-        <div className="home">
-            <img className="home-image"
-             src={HomePic}
-             alt="logo"/>
-
+     
+        <div className="home1">
+            <Header/> 
+            {/*<img className="home-image"
+             src={bgPic}
+    alt="logo"/>*/}
+             
             <div className="home-row">
                 <Product
                      id="1"
@@ -87,10 +94,33 @@ function Home(){
 
                 />
             </div>
+            <div className="home-row">
+                <Product
+                     id="10"
+                     title="Acer 2023 Newest Aspire 5 15.6' FHD IPS Slim Laptop, Intel Core i3-1115G4(Up to 4.1GHz)"
+                     price={499}
+                     image={ProductPic9}
 
+                />
+                <Product
+                     id="11"
+                     title="Bose Quiet-control 30 Wireless Headphones Noise Cancelling - Black"
+                     price={177.99}
+                     image={ProductPic10}
+
+                />
+                <Product
+                     id="12"
+                     title="Intel Core i9-13900K Desktop Processor 24 cores (8 P-cores + 16 E-cores) "
+                     price={499}
+                     image={ProductPic11}
+
+                />
+                </div>
+                <Footer/>
         </div>
      
     )
 }
 
-export default Home;
+export default Item;

@@ -85,6 +85,8 @@
     border: none;
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
     width: 60%;
 }
 
@@ -98,6 +100,7 @@
 .header-search-icon:hover{
     box-shadow: inset -4px -4px 10px white;
     transition: .2s;
+    cursor: pointer;
 }
 
 

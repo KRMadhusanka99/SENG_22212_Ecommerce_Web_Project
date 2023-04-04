@@ -17,11 +17,11 @@ function Navbar(){
                      <span class="navbar-toggler-icon"></span>
                 </button>*/}
              
-                
+                {/*}
                      <Link>Home</Link>
                      <Link>Product</Link>
                      <Link>Customer Service</Link>
-                     <Link>Conact Us</Link>
+            <Link>Conact Us</Link>*/}
 
             
                 </div>

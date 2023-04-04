@@ -28,7 +28,7 @@
     margin-bottom: 15px;
 }
 
-.product > button{
+.product > button1{
     background-color: #f0c14b;
     border: none;
     color: white;
@@ -37,13 +37,13 @@
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 20px;
     margin: 3px 2px;
     cursor: pointer;
 
 }
 
-.product > button:hover{
+.product > button1:hover{
     box-shadow: inset 5px 4px 10px rgba(0,0,0,.3),
     inset -4px -4px 10px white;
     transition: .2s; 

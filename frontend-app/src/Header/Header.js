@@ -4,20 +4,18 @@ import {FaSearch} from 'react-icons/fa';
 import {FaShoppingBasket} from 'react-icons/fa';
 import {Link} from 'react-router-dom';
 import {useStateValue} from '../StateProvider';
-//import {auth} from '../firebase'
+import {auth} from '../firebase'
 import iconpic from '../Picture/icon.png'
-import logopic from '../Picture/logo.png'
-
-
 
 function Header() {
 
   const [{basket,loggedinuser}, dispatch] = useStateValue();
 
-  console.log("my basket ",basket)
+  
+  //console.log("my basket ",basket)
   const logoutUser =()=>{
     if(loggedinuser){
-        
+        auth.signOut();
     }
   }
 
@@ -41,10 +39,11 @@ function Header() {
                 </button>*/}
              
                 
-                     <Link>Home</Link>
-                     <Link>Product</Link>
+                     <Link to='/'>Home</Link>
+                     <Link to={"/item" }>Product</Link>
                      <Link>Customer Service</Link>
-                     <Link>Conact Us</Link>
+                     <Link>Contact Us</Link>
+                    
 
             </div>
                 </div>
@@ -73,7 +72,7 @@ function Header() {
       
 
         {/*Basket Icon*/}
-        <Link to="/checkout" className='header-link'>
+        <Link to="/cart" className='header-link'>
             <div className='header-option-basket'>
                 <FaShoppingBasket/>
                 <span className='header-option-line2 header-product-count'>{basket?.length}</span>
