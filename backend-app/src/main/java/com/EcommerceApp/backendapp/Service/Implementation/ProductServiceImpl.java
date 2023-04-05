@@ -45,7 +45,7 @@ public class ProductServiceImpl implements ProductService{
     }
 
 
-    public Product updateProduct(long id, Product new_product) {
+    public Product updateProduct(Long id, Product new_product) {
         Product old_product = productRepository.findById(id).orElseThrow(()->new RuntimeException("Product not found."));
         old_product.setName(new_product.getName());
         old_product.setImage(new_product.getImage());

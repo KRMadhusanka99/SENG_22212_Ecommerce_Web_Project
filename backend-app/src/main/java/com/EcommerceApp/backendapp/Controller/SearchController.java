@@ -17,7 +17,7 @@ public class SearchController {
     @Autowired
     private ProductService productService;
 
-    @GetMapping("/search")
+    @GetMapping("/searchName")
     public ResponseEntity<List<Product>> searchProducts(@RequestParam String name) {
         List<Product> productList = null;
         try {

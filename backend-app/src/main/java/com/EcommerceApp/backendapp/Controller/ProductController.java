@@ -17,7 +17,7 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @GetMapping//list products
+    @GetMapping("/view")//list products
     public ResponseEntity<List<Product>> getAllProducts() {
         List<Product> products = productService.getAllProducts();
         return ResponseEntity.ok(products);
@@ -33,8 +33,8 @@ public class ProductController {
     }
 
     @PostMapping("/addProduct")//add products
-    public ResponseEntity<Product> addProduct(@RequestBody Product product , @RequestParam long id) {
-        productService.addProduct(product,id);
+    public ResponseEntity<Product> addProduct(@RequestBody Product product , @RequestParam Long category_id) {
+        productService.addProduct(product,category_id);
         return ResponseEntity.status(HttpStatus.CREATED).body(product);
     }
 
@@ -49,7 +49,7 @@ public class ProductController {
     }
 
     @PutMapping("/updateProduct")//update product details by product id
-    public ResponseEntity<Product> updateProduct(@RequestParam int product_id, @RequestBody Product product){
+    public ResponseEntity<Product> updateProduct(@RequestParam Long product_id, @RequestBody Product product){
         Product updatedProduct = productService.updateProduct(product_id,product);
         return new ResponseEntity<Product>(updatedProduct,HttpStatus.ACCEPTED);
     }

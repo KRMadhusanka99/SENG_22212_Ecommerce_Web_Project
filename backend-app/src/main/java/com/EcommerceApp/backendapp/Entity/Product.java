@@ -9,18 +9,18 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
+
     private String name;
-    @Column(nullable = false)
+
     private String image;
-    @Column(nullable = false)
-    private Double price;
-    @Column(nullable = false)
+
+    private double price;
+
     private String description;
-    @Column(nullable = false)
+
     private int quantity;
     @ManyToOne
-    @JoinColumn(name = "category_id", nullable = false)
+    @JoinColumn(name = "category_id")
     private Category category;
 
     public Long getId() {
@@ -43,8 +43,8 @@ public class Product {
         return image;
     }
 
-    public void setImage(String image_url) {
-        this.image = image_url;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public Double getPrice() {
@@ -79,7 +79,5 @@ public class Product {
         this.category = category;
     }
 
-    @Column(nullable = false)
-    private Boolean available;
 
 }
