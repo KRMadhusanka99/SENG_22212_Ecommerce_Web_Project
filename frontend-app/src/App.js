@@ -5,9 +5,12 @@ import Header from "./Header/Header";
 import { Routes, Route } from 'react-router-dom';
 import Login from './Login/Login';
 import Home from './Home/Home';
-import Checkout from './Checkout/Checkout';
+import Cart from './Cart/Cart';
 import Footer from './Footer/Footer'
 import Navbar from './Navbar/Navabar'
+import Item from './Item/Item'
+import SignUp from './SignUp/SignUp'
+import Contact from './Contact/Contact'
 import{auth} from './firebase';
 import { useStateValue } from './StateProvider';
 import { useEffect } from 'react';
@@ -31,6 +34,7 @@ function App() {
           user: null
         })
        }
+       
     })
 
   return() => {
@@ -43,8 +47,11 @@ function App() {
   return (
     <div className="App">
       <Routes>
-            <Route path="/checkout" element={<><Header/><Checkout/><Footer/></>}/>
-            <Route path="/login" element={<Login/>}/>
+            <Route path="/cart" element={<><Header/><Cart/></>}/>
+            <Route path="/login" element={<><Header/><Login/><Footer/></>}/>
+            <Route path="/item" element={<><Header/><Item/><Footer/></>}/>
+            <Route path="/signup" element={<><Header/><SignUp/><Footer/></>}/>
+            <Route path="/contact" element={<><Header/><Contact/><Footer/></>}/>
             <Route path="/" element={<><Header/><Navbar/><Home/><Footer/></>}/> 
           </Routes>
     </div>

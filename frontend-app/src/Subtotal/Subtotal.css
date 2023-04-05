@@ -5,4 +5,12 @@
 .checkout-button{
     padding: 8px;
     margin: 5px;
+    background: #0606b2;
+}
+.bottom{
+    background: #ecf0f1;
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

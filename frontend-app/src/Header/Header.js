@@ -39,10 +39,11 @@ function Header() {
                 </button>*/}
              
                 
-                     <Link>Home</Link>
-                     <Link>Product</Link>
+                     <Link to='/'>Home</Link>
+                     <Link to={"/item" }>Product</Link>
                      <Link>Customer Service</Link>
-                     <Link>Conact Us</Link>
+                     <Link to={"/contact" }>Contact Us</Link>
+                    
 
             </div>
                 </div>
@@ -71,7 +72,7 @@ function Header() {
       
 
         {/*Basket Icon*/}
-        <Link to="/checkout" className='header-link'>
+        <Link to="/cart" className='header-link'>
             <div className='header-option-basket'>
                 <FaShoppingBasket/>
                 <span className='header-option-line2 header-product-count'>{basket?.length}</span>
