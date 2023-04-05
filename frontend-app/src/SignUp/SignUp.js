@@ -49,6 +49,7 @@ function SignUp(){
         </div>
          <div>
            <h1>Registration</h1>
+           
           <table>
             <tr><td>
            <div>
