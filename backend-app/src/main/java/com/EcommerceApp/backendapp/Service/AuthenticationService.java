@@ -6,6 +6,7 @@ import com.EcommerceApp.backendapp.Email.EmailSender;
 import com.EcommerceApp.backendapp.Email.EmailValidator;
 import com.EcommerceApp.backendapp.RequestandResponse.Request.AuthenticationRequest;
 import com.EcommerceApp.backendapp.RequestandResponse.Request.RegisterRequest;
+import com.EcommerceApp.backendapp.RequestandResponse.Request.VerifyRequest;
 import com.EcommerceApp.backendapp.RequestandResponse.Response.AuthenticationResponse;
 import com.EcommerceApp.backendapp.Entity.Token.Token;
 import com.EcommerceApp.backendapp.Entity.Token.TokenType;
@@ -78,13 +79,36 @@ public class AuthenticationService {
                 .build();
     }
 
+    public AuthenticationResponse reVerifyEmail(VerifyRequest request){
+        User userDe = userRepository.findByEmail(request.getEmail())
+                .orElseThrow();
+
+        var user = User.builder()
+                .firstname(userDe.getFirstname())
+                .lastname(userDe.getLastname())
+                .email(userDe.getEmail())
+                .password(passwordEncoder.encode(userDe.getPassword()))
+                .phonenumber(userDe.getPhonenumber())
+                .userRole(UserRole.USER_ROLE)
+                .build();
+        var jwtToken = jwtService.generateToken(user);
+        saveUserToken(userDe, jwtToken);
+        String link = "http://localhost:8080/authenticate/confirm?token=" + jwtToken;
+        emailSender.send(
+                userDe.getEmail(),
+                buildEmail(userDe.getFirstname(), link));
+        return AuthenticationResponse.builder()
+                .token(jwtToken)
+                .build();
+    }
+
     private void saveUserToken(User user, String jwtToken) {
         var token = Token.builder()
                 .user(user)
                 .token(jwtToken)
                 .tokenType(TokenType.BEARER)
                 .expired(false)
-                .revoked(false).expiredAt(LocalDateTime.now().plusMinutes(16))
+                .revoked(false).expiredAt(LocalDateTime.now().plusMinutes(10))
                 .build();
         tokenRepository.save(token);
     }
@@ -107,19 +131,30 @@ public class AuthenticationService {
                         new IllegalStateException("token not found"));
 
         if (confirmationToken.getConfirmedAt() != null) {
-            throw new IllegalStateException("Email already confirmed");
+            return ("<div class=\"container\" style=\"text-align:center;\">\n" +
+                    "    <h2 style=\"font-family:Helvetica,Arial,sans-serif; font-size:25px;line-height:25px;\">Sorry, we could not verify account. It has already been verified successfully\n" +
+                    "        </h2>\n" +
+                    "    <a style=\"font-size:18px;\" href=\"http://localhost:3000/\">Click here to Login</a>\n" +
+                    "</div>");
         }
 
         LocalDateTime expiredAt = confirmationToken.getExpiredAt();
 
         if (expiredAt.isBefore(LocalDateTime.now())) {
-            throw new IllegalStateException("Token expired");
+            return ("<div class=\"container\" style=\"text-align:center;\">\n" +
+                    "    <h2 style=\"font-family:Helvetica,Arial,sans-serif; font-size:25px;line-height:25px;\">Sorry, we could not verify account.\n" +
+                    "        Link has been expired. Try again...</h2>\n" +
+                    "    <a style=\"font-size:18px;\" href=\"http://localhost:3000/verify\">Click here to Verify Again</a>\n" +
+                    "</div>");
         }
 
         tokenRepository.updateConfirmedAt(token,LocalDateTime.now());
         userRepository.verifyUser(
                 confirmationToken.getUser().getEmail());
-        return "Verified Email Successfully";
+        return "<div class=\"container\" style=\"text-align:center;\">\n" +
+                "    <h2 style=\"font-family:Helvetica,Arial,sans-serif; font-size:25px;line-height:25px;\">Congratulations, your account has been verified.</h2>\n" +
+                "    <a style=\"font-size:18px;\" href=\"http://localhost:3000/\">Click here to Login</a>\n" +
+                "</div>";
     }
 
     private String buildEmail(String name, String link) {
