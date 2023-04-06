@@ -14,6 +14,7 @@ import Contact from './Contact/Contact'
 import{auth} from './firebase';
 import { useStateValue } from './StateProvider';
 import { useEffect } from 'react';
+import SingleProduct from './SingleProduct/SingleProduct';
 
 function App() {
 
@@ -52,6 +53,7 @@ function App() {
             <Route path="/item" element={<><Header/><Item/><Footer/></>}/>
             <Route path="/signup" element={<><Header/><SignUp/><Footer/></>}/>
             <Route path="/contact" element={<><Header/><Contact/><Footer/></>}/>
+            <Route path="/singleProduct/:id" element={<><Header/><SingleProduct/><Footer/></>}/>
             <Route path="/" element={<><Header/><Navbar/><Home/><Footer/></>}/> 
           </Routes>
     </div>

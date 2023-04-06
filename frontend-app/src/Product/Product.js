@@ -2,6 +2,8 @@ import React from "react";
 import './Product.css';
 import '../Home/Home.css';
 import {useStateValue} from '../StateProvider';
+import { Link } from "react-router-dom";
+import '../SingleProduct/SingleProduct'
 
 
 function Product({id,title,image,price,rating}){
@@ -23,11 +25,11 @@ function Product({id,title,image,price,rating}){
     return(
         <div className="product">
             <div className="product-info">
-                <p>{title}</p>
+                <Link to={`/SingleProduct/${id}`}><p>{title}</p>
                 <p className="product-price">
                     <small>$</small>
                     <strong>{price}</strong>
-                </p>
+                </p></Link>
 {/*
                 <div className="product-rating">
                     {
