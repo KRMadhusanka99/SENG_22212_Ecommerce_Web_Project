@@ -1,8 +1,5 @@
 import React from "react";
-<<<<<<< HEAD
 import './Home.css';
-=======
->>>>>>> main
 import HomePic from '../Picture/home.png';
 import ProductPic from '../Picture/1.jfif';
 import ProductPic1 from '../Picture/4.jpg';

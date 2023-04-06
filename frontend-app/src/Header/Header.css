@@ -103,10 +103,6 @@
     cursor: pointer;
 }
 
-
-<<<<<<< HEAD
-=======
-
 .icon {
     display: none;
   }
@@ -136,6 +132,8 @@
   }
   
   .dropdown-content a {
+    border-radius: 5px;
+    border: #fff;
     color: black;
     margin-top: 0px;
     margin-bottom: 0px;
@@ -145,18 +143,19 @@
   }
   
 .dropdown:hover .dropbtn {
-    border: 1px solid #fff;
+    border: 1px solid white;
     border-radius: 4px;
   }
   
   .dropdown-content a:hover {
-    background-color: #ddd;
-    
+    background-color: #1e21d8;
+    color: #fff;
   }
   
   .dropdown:hover .dropdown-content {
     display: block;
-    border-color: #f9f9f9;
+    border-color: #1e21d8;
   }
   
->>>>>>> main
+
+

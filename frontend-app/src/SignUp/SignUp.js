@@ -49,10 +49,6 @@ function SignUp(){
         </div>
          <div>
            <h1>Registration</h1>
-<<<<<<< HEAD
-=======
-           
->>>>>>> main
           <table>
             <tr><td>
            <div>

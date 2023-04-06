@@ -1,8 +1,5 @@
 import React from "react";
-<<<<<<< HEAD
 import './Item.css';
-=======
->>>>>>> main
 import ProductPic from '../Picture/1.jfif';
 import ProductPic1 from '../Picture/4.jpg';
 import ProductPic2 from '../Picture/5.jfif';
@@ -24,10 +21,6 @@ function Item(){
     return(
      
         <div className="home1">
-<<<<<<< HEAD
-=======
-            <Header/> 
->>>>>>> main
             {/*<img className="home-image"
              src={bgPic}
     alt="logo"/>*/}
@@ -124,10 +117,6 @@ function Item(){
 
                 />
                 </div>
-<<<<<<< HEAD
-=======
-                <Footer/>
->>>>>>> main
         </div>
      
     )
