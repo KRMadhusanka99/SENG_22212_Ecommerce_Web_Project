@@ -7,6 +7,10 @@ import {useStateValue} from '../StateProvider';
 import {auth} from '../firebase'
 import iconpic from '../Picture/icon.png'
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 function Header() {
 
   const [{basket,loggedinuser}, dispatch] = useStateValue();
@@ -18,7 +22,11 @@ function Header() {
         auth.signOut();
     }
   }
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> main
   return (
     <div>
     <nav className="header">
@@ -41,7 +49,25 @@ function Header() {
                 
                      <Link to='/'>Home</Link>
                      <Link to={"/item" }>Product</Link>
+<<<<<<< HEAD
                      <Link>Customer Service</Link>
+=======
+                    {/* <Link>Customer Service</Link>*/}
+                  
+                    <div class="dropdown">
+                      <button2 class="dropbtn">Category
+                      </button2>
+                      <div class="dropdown-content">
+                        <a href="#">Laptop</a>
+                        <a href="#">Mouse</a>
+                        <a href="#">Haedphone</a>
+                        <a href="#">Keyboard</a>
+                        <a href="#">USB</a>
+                        </div>
+                        </div>
+   
+                    
+>>>>>>> main
                      <Link to={"/contact" }>Contact Us</Link>
                     
 

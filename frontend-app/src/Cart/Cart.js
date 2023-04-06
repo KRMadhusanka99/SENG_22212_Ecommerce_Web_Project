@@ -4,7 +4,10 @@ import Subtotal from '../Subtotal/Subtotal';
 import {useStateValue} from '../StateProvider';
 import ProductCart from '../ProductCart/ProductCart';
 import Footer from '../Footer/Footer';
+<<<<<<< HEAD
 import shopping_cart from '../Picture/shopping_cart.png'
+=======
+>>>>>>> main
 
 function Cart(){
 
@@ -16,15 +19,22 @@ function Cart(){
             <div className="checkout-left">
                 {
                     basket.length === 0 ? (
+<<<<<<< HEAD
                         <div className="empty">
                             <h2 className="checkout-title">Your shopping basket is empty </h2>
                             <img src = {shopping_cart} alt = "" />
                             <p>You have no items in your basket. Buy one</p>
                             <button1><a href= "/">Go shopping Now</a></button1>
+=======
+                        <div>
+                            <h2 className="checkout-title">Your shopping basket is empty </h2>
+                            <p>You have no items in your basket. Buy one</p>
+>>>>>>> main
                         </div>
                     ):(
                         <div>
                             <h2 className="shoppingbaskettitle">Items in the Shopping Basket</h2>
+<<<<<<< HEAD
                             <table >
                                 <tbody>
                                 <tr><th><div className='cart-cth'>
@@ -44,6 +54,8 @@ function Cart(){
                                 </div></th></tr>
                             </tbody>
                             </table>
+=======
+>>>>>>> main
                             {
                                 basket.map(item => (
                                     <ProductCart

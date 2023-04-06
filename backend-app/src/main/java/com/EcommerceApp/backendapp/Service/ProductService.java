@@ -2,7 +2,10 @@ package com.EcommerceApp.backendapp.Service;
 
 import com.EcommerceApp.backendapp.DTO.CategoryRepository;
 import com.EcommerceApp.backendapp.DTO.ProductRepository;
+<<<<<<< HEAD
 import com.EcommerceApp.backendapp.entity.Carousel;
+=======
+>>>>>>> main
 import com.EcommerceApp.backendapp.entity.Category;
 import com.EcommerceApp.backendapp.entity.Product;
 import net.coobird.thumbnailator.Thumbnails;
@@ -46,6 +49,7 @@ public class ProductService{
 
         product.setName(name);
         product.setPrice(price);
+<<<<<<< HEAD
         product.setBrand(brand);
         product.setQuantity(quantity);
         product = addCategoriesToProduct(product,categories);
@@ -59,6 +63,10 @@ public class ProductService{
             p.getCategories().add(category);
         }
         return p;
+=======
+
+        productRepo.save(product);
+>>>>>>> main
     }
 
     public List<Product> getAllProduct()
@@ -116,6 +124,7 @@ public class ProductService{
         p.getCarousel().add(carousel);
         productRepo.save(p);
     }
+<<<<<<< HEAD
 
     //no api..........
 
@@ -187,4 +196,14 @@ public class ProductService{
         return productRepo.findAllBrandsDistincts();
     }
 
+=======
+    public Category saveCategory(Category category) {
+        return categoryRepository.save(category);
+    }
+
+    public List<Category> getAllCategories() {
+
+        return categoryRepository.findAll();
+    }
+>>>>>>> main
 }
