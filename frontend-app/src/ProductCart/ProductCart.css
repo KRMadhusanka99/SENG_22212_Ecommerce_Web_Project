@@ -20,15 +20,9 @@
     padding-left: 20px;
 }
 
-<<<<<<< HEAD
 button{
     background-color: #b83232;
     border: 1px solid bisque;
-=======
-.productcart-info > button{
-    background-color: #f0c14b;
-    border: 1px solid;
->>>>>>> main
     border-radius: 4px;
     margin-top: 10px;
     border-color: #a88734 #9c7e31 #846a29;
@@ -39,7 +33,6 @@ button{
                 inset -4px -4px 10px white;
     transition: .2s;
     cursor: pointer;
-<<<<<<< HEAD
 }
 table {
     font-family: arial, sans-serif;
@@ -66,6 +59,3 @@ table {
   .sn{
     width: 230px;
   }
-=======
-}
->>>>>>> main

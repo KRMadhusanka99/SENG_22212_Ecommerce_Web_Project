@@ -5,7 +5,6 @@
 .checkout-button{
     padding: 8px;
     margin: 5px;
-<<<<<<< HEAD
     background: #0606b2;
 }
 .bottom{
@@ -14,6 +13,4 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-=======
->>>>>>> main
 }
