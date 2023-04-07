@@ -1,5 +1,6 @@
 .outer{
     padding-top: 120px;
+    padding-bottom: 30px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
