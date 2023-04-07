@@ -36,25 +36,23 @@ const Contact = () => {
       method="POST"
       target="_blank"
     >
-      <div className="second-input1" >
+      <div className="second-input" >
         <input
           type="text"
           placeholder="Your name"
           name="name"
-          className="name"
           required
         />
       </div>
-      <div className="second-input1">
+      <div className="second-input">
         <input
           type="email"
           placeholder="Email"
           name="email"
-          className="name"
           required
         />
       </div>
-      <div className="second-input1">
+      <div className="second-input">
         <textarea
           placeholder="Your message"
           name="message"
@@ -62,7 +60,7 @@ const Contact = () => {
           required
         />
       </div>
-      <div className="second-input1">
+      <div className="second-input">
         <button
           className="b1"
           type="submit"

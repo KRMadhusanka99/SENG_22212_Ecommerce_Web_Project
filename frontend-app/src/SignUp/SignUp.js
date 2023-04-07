@@ -51,7 +51,7 @@ function SignUp(){
            <h1>Registration</h1>
           <table>
             <tr><td>
-           <div>
+            <div className="second-input">
           <img src={user} alt="user" className="email"/>
           <input value={username} onChange={event => setUserName(event.target.value)} type="username" placeholder="First Name" className="name"/>
           </div>
@@ -89,8 +89,8 @@ function SignUp(){
 
           
           <p>you agree to INNOVA's Terms and Conditions</p>
-          <div className="button2"></div>
-          <button onClick={Createuser} type="submit" className='button2'>Create Account</button>
+          <div className="button2">
+          <button onClick={Createuser} type="submit">Create Account</button></div>
           </div>
         
         </div>
