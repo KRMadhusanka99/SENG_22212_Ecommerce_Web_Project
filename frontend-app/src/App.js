@@ -17,7 +17,18 @@ import { useEffect } from 'react';
 import SingleProduct from './SingleProduct/SingleProduct';
 import PaymentCheckout from './paymentCheckout/PaymentCheckout';
 import CategoryPage from './CategoryPage/CategoryPage'
-
+import AHeader from './components/Admin/header/Header';
+import AFooter from './components/Admin/footer/Footer';
+import AdminSignin from './components/Admin/AdminSignin';
+import AdminLogout from './components/Admin/AdminLogout';
+import Dashboard from './components/Admin/Dashboard';
+import AddProduct from './components/Admin/AddProduct';
+import AddBrand from './components/Admin/AddBrand';
+import AddCategory from './components/Admin/AddCategory';
+import ProductList from './components/Admin/ProductList';
+import BrandList from './components/Admin/BrandList';
+import CategoryList from './components/Admin/CategoryList';
+import Inquiry from './components/Admin/Inquiry';
 function App() {
 
   const [{loggedinuser, dispatch}] = useStateValue()
@@ -58,7 +69,17 @@ function App() {
             <Route path="/contact" element={<><Header/><Contact/><Footer/></>}/>
             <Route path="/singleProduct/:id" element={<><Header/><SingleProduct/><Footer/></>}/>
             <Route path="/categoryPage/:category" element={<><Header/><CategoryPage/><Footer/></>} />
-            <Route path="/" element={<><Header/><Navbar/><Home/><Footer/></>}/> 
+            <Route path="/" element={<><Header/><Navbar/><Home/><Footer/></>}/>
+            <Route exact path="/admin" element={<AdminSignin/>} />
+            <Route exact path="/admin/logout" element={<><AHeader /><main><AdminLogout/></main><AFooter /></>} />
+            <Route exact path="/admin/dashboard" element={<><AHeader /><main><Dashboard/></main><AFooter /></>} />
+            <Route exact path="/admin/add-product" element={<><AHeader /><main><AddProduct/></main><AFooter /></>} />
+            <Route exact path="/admin/add-brand" element={<><AHeader /><main><AddBrand/></main><AFooter /></>} />
+            <Route exact path="/admin/add-category" element={<><AHeader /><main><AddCategory/></main><AFooter /></>} />
+            <Route exact path="/admin/products" element={<><AHeader /><main><ProductList/></main><AFooter /></>} />
+            <Route exact path="/admin/brands" element={<><AHeader /><main><BrandList/></main><AFooter /></>} />
+            <Route exact path="/admin/categories" element={<><AHeader /><main><CategoryList/></main><AFooter /></>} />
+            <Route exact path="/admin/inquiries" element={<><AHeader /><main><Inquiry/></main><AFooter /></>} />
           </Routes>
     </div>
   );

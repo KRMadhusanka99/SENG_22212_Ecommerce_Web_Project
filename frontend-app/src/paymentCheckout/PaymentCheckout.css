@@ -51,3 +51,8 @@ input:placeholder-shown{
     color: rgb(43, 65, 208);
     border: 1px solid rgb(43, 65, 208);;
 }
+.address input, .payment input{
+    height: 25px;
+    width:300px;
+    box-shadow: inset 0px 0px 25px 0px #888;
+  }

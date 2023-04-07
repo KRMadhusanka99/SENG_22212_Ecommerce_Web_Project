@@ -1,0 +1,35 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .dashboard-summary {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin-top: 50px;
+  }
+  
+  .dashboard-summary-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    width: 20%;
+  }
+  
+  .dashboard-summary-item h2 {
+    margin-bottom: 10px;
+  }
+  
+  .dashboard-charts {
+    margin-top: 50px;
+  }
+  
+  .dashboard-charts h2 {
+    margin-bottom: 20px;
+  }
+  

@@ -42,7 +42,7 @@ function Login(){
          </div>
          <div>
            <h1>Login</h1>
-           <div>
+           <div className="second-input">
             
           <img src={email} alt="email" className="email"/>
           <input value={useremail} onChange={event => setUserEmail(event.target.value)} type="email" placeholder="Email address" className="name"/>
@@ -52,13 +52,13 @@ function Login(){
           <input value={userpassword} onChange={event => setUserPassword(event.target.value)} type="password" placeholder="password" className="name"/>
           
           </div>
-          <div className="login-button"></div>
-          <button onClick={loginuser} type="submit" className='login-button'>Login</button>
+          <div className="login-button">
+          <button onClick={loginuser} type="submit" className='login-button'>Login</button></div>
           </div>
-        
+          <div className="button2">
         <p>By login, you agree to INNOVA's Terms and Conditions</p>
        {/*} <button onClick={signupuser} className='login-registration'>SignUp</button>*/}
-        <Link to="/signup"><button>Create Account</button></Link>
+        <Link to="/signup"><button>Create Account</button></Link></div>
         </div>
        </div>
        
