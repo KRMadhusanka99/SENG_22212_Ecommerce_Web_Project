@@ -15,8 +15,6 @@ import { useState, useEffect } from 'react';
 // import ProductPic10 from '../Picture/11.jpg';
 // import ProductPic11 from '../Picture/12.jpg';
 
-import Header from '../Header/Header'
-import Footer from '../Footer/Footer'
 //import bgPic from '../Picture/bg2.jpg';
 
 // function Item(){
@@ -137,7 +135,7 @@ function Item() {
    
      return (
        <div className="home1">
-          <Header/><br></br><br></br><p></p>
+          
          {/* <img className="home-image" src={HomePic} alt="logo" /> */}
    
          {products.length > 0 && (
@@ -153,7 +151,7 @@ function Item() {
              ))}
            </div>
          )}
-         <Footer/>
+         
        </div>
      );
    }

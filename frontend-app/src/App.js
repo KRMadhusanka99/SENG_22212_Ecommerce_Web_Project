@@ -14,6 +14,9 @@ import Contact from './Contact/Contact'
 import{auth} from './firebase';
 import { useStateValue } from './StateProvider';
 import { useEffect } from 'react';
+import SingleProduct from './SingleProduct/SingleProduct';
+import PaymentCheckout from './paymentCheckout/PaymentCheckout';
+import Category from './Category/Category'
 
 function App() {
 
@@ -48,10 +51,13 @@ function App() {
     <div className="App">
       <Routes>
             <Route path="/cart" element={<><Header/><Cart/></>}/>
-            <Route path="/login" element={<Login/>}/>
-            <Route path="/item" element={<Item/>}/>
-            <Route path="/signup" element={<SignUp/>}/>
-            <Route path="/contact" element={<Contact/>}/>
+            <Route path="/checkout" element={<><Header/><PaymentCheckout/><Footer/></>}/>
+            <Route path="/login" element={<><Header/><Login/><Footer/></>}/>
+            <Route path="/item" element={<><Header/><Item/><Footer/></>}/>
+            <Route path="/signup" element={<><Header/><SignUp/><Footer/></>}/>
+            <Route path="/contact" element={<><Header/><Contact/><Footer/></>}/>
+            <Route path="/singleProduct/:id" element={<><Header/><SingleProduct/><Footer/></>}/>
+            <Route path="/category/:id" element={<><Header/><Category/><Footer/></>}/>
             <Route path="/" element={<><Header/><Navbar/><Home/><Footer/></>}/> 
           </Routes>
     </div>
