@@ -2,7 +2,7 @@ import React from "react";
 import './SingleProduct.css';
 import '../Home/Home.css';
 import {useStateValue} from '../StateProvider';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import products from "../data";
 
 
@@ -48,7 +48,7 @@ function SingleProduct(){
                     <strong>{price}</strong>
                 </p>
                 <button2 onClick={addToBasket}>Add to Basket</button2>
-                <button1>Buy now</button1>
+                <button1><Link to="/checkout">Buy now</Link></button1>
             </div>
             
             

@@ -19,7 +19,7 @@
     width: 100px;
     height: 100px;
 }
-.product-info> button1{
+.product-info> button2{
     background-color: rgb(43, 65, 208);;
     border: none;
     color: white;
@@ -33,12 +33,12 @@
     
 }
 
-.product-info> button1:hover{
+.product-info> button2:hover{
     background: white;
     color: rgb(43, 65, 208);
     border: 1px solid rgb(43, 65, 208);;
 }
-.product-info> button2{
+.product-info> button1{
     border: 1px solid rgb(43, 65, 208);;
     color: rgb(43, 65, 208);
     border-radius: 8px;
@@ -51,7 +51,7 @@
 
 }
 
-.product-info> button2:hover{
+.product-info> button1:hover{
     background: rgb(43, 65, 208);
     color: white;
 }
