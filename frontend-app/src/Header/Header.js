@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom';
 import {useStateValue} from '../StateProvider';
 import {auth} from '../firebase'
 import iconpic from '../Picture/icon.png'
+import '../CategoryPage/CategoryPage'
 
 function Header() {
 
@@ -46,11 +47,12 @@ function Header() {
                       <Link class="dropbtn">Category
                       </Link>
                       <div class="dropdown-content">
-                        <a href="#">Laptop</a>
-                        <a href="#">Mouse</a>
-                        <a href="#">Haedphone</a>
-                        <a href="#">Keyboard</a>
-                        <a href="#">USB</a>
+                        <Link to={"/categoryPage/Laptop"}>Laptop</Link>
+                        <Link to={"/categoryPage/Mouse"}>Mouse</Link>
+                        <Link to={"/categoryPage/Headphone"}>Headphone</Link>
+                        <Link to={"/categoryPage/Keyboard"}>Keyboard</Link>
+                        <Link to={"/categoryPage/USB"}>USB</Link>
+                        <Link to={"/categoryPage/Desktop"}>Desktop</Link>
                         </div>
                         </div>
                      <Link to={"/contact" }>Contact Us</Link>

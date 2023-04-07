@@ -16,6 +16,7 @@ import { useStateValue } from './StateProvider';
 import { useEffect } from 'react';
 import SingleProduct from './SingleProduct/SingleProduct';
 import PaymentCheckout from './paymentCheckout/PaymentCheckout';
+import CategoryPage from './CategoryPage/CategoryPage'
 
 function App() {
 
@@ -56,6 +57,7 @@ function App() {
             <Route path="/signup" element={<><Header/><SignUp/><Footer/></>}/>
             <Route path="/contact" element={<><Header/><Contact/><Footer/></>}/>
             <Route path="/singleProduct/:id" element={<><Header/><SingleProduct/><Footer/></>}/>
+            <Route path="/categoryPage/:category" element={<><Header/><CategoryPage/><Footer/></>} />
             <Route path="/" element={<><Header/><Navbar/><Home/><Footer/></>}/> 
           </Routes>
     </div>
