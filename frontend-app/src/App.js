@@ -16,7 +16,8 @@ import { useStateValue } from './StateProvider';
 import { useEffect } from 'react';
 import SingleProduct from './SingleProduct/SingleProduct';
 import PaymentCheckout from './paymentCheckout/PaymentCheckout';
-import CategoryPage from './CategoryPage/CategoryPage'
+import CategoryPage from './CategoryPage/CategoryPage';
+import SearchProduct from './SearchProduct/SearchProduct';
 import AHeader from './components/Admin/header/Header';
 import AFooter from './components/Admin/footer/Footer';
 import AdminSignin from './components/Admin/AdminSignin';
@@ -69,6 +70,7 @@ function App() {
             <Route path="/contact" element={<><Header/><Contact/><Footer/></>}/>
             <Route path="/singleProduct/:id" element={<><Header/><SingleProduct/><Footer/></>}/>
             <Route path="/categoryPage/:category" element={<><Header/><CategoryPage/><Footer/></>} />
+            <Route path="/searchProduct/:searchQuery" element={<><Header/><SearchProduct/><Footer/></>} />
             <Route path="/" element={<><Header/><Navbar/><Home/><Footer/></>}/>
             <Route exact path="/admin" element={<AdminSignin/>} />
             <Route exact path="/admin/logout" element={<><AHeader /><main><AdminLogout/></main><AFooter /></>} />

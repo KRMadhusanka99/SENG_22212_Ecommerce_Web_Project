@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import './Header.css';
 import {FaSearch} from 'react-icons/fa';
 import {FaShoppingBasket} from 'react-icons/fa';
@@ -7,12 +7,21 @@ import {useStateValue} from '../StateProvider';
 import {auth} from '../firebase'
 import iconpic from '../Picture/icon.png'
 import '../CategoryPage/CategoryPage'
+import { Button } from '@material-ui/core';
 
 function Header() {
 
   const [{basket,loggedinuser}, dispatch] = useStateValue();
 
-  
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      window.location.href = `/searchProduct/${searchQuery}`;
+    }
+  };
+
   //console.log("my basket ",basket)
   const logoutUser =()=>{
     if(loggedinuser){
@@ -27,9 +36,27 @@ function Header() {
       <img className='header-icon' src={iconpic} alt="icon"/>
       
         <div className='header-search'>
-        
-            <input type="text" placeholder="Search here" className='header-search-input'/>
-            <FaSearch className="header-search-icon"/></div>
+        <form className="search-form" onSubmit={handleSearch}>
+            <input
+              type="text"
+              placeholder="Search here"
+              className="header-search-input"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            <button className="header-search-button">
+              <FaSearch />
+            </button>
+          </form>
+            {/* <input type="text" placeholder="Search here" className='header-search-input'onKeyDown={(event) => {
+                  if (event.key === 'Enter') {
+                    const searchQuery = event.target.value;
+                    // Perform search based on the searchQuery
+                     window.location.href = `/searchProduct/${searchQuery}`;
+                    // <Link to={`/searchProduct/${searchQuery}`}></Link>
+                  }
+                }}/> */}
+            </div>
        
         <div className="navbar-outer">
         

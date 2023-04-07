@@ -1,0 +1,8 @@
+.frame{
+    padding-top: 130px;
+}
+.frame>p{
+    color: red;
+    text-align: center;
+    font-size: larger;
+}

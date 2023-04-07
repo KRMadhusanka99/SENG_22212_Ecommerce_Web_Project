@@ -156,6 +156,12 @@
     display: block;
     border-color: #1e21d8;
   }
-  
-
-
+.header-search>form{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.header-search-button{
+    margin-left: 0;
+    margin-top: 0;
+}
