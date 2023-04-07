@@ -14,3 +14,8 @@
     flex-direction: row;
     justify-content: space-between;
 }
+
+.subtotal button{
+    width: 150px;
+    Height: 40px;
+}

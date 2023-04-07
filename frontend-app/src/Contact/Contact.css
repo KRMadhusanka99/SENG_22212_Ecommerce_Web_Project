@@ -24,21 +24,9 @@
 h1{
   text-align: center;
 }
-.email{
-  height: 25px;
-  width: 25px;
-  position: absolute;
-  padding: 10px 0 0 10px;
-}
 
 .name{
-  padding-left: 70px;
   font-size: 20px;
-}
-
-.second-input1{
-  padding-top: 10px;
-  padding-bottom: 5px;
 }
 
 .b1{
