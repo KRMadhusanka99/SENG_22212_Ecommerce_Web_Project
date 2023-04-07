@@ -1,0 +1,52 @@
+.outer{
+    padding-top: 120px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.info{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    justify-content: space-between;
+    padding-left: 100px;
+}
+.cart{
+    width: 30%;
+}
+input:placeholder-shown{
+    text-align: center;
+}
+.address{
+    padding-right: 50px;
+}
+.payment{
+    padding-left: 50px;
+}
+.icon-container>i{
+    margin-right: 5px;
+    font-size:xx-large;
+}
+.checkbox{
+    width: 20px;
+    height: 20px;
+}
+.basic> button1{
+    background-color: rgb(43, 65, 208);;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    margin: 3px 2px;
+    cursor: pointer;
+    
+}
+
+.basic> button1:hover{
+    background: white;
+    color: rgb(43, 65, 208);
+    border: 1px solid rgb(43, 65, 208);;
+}
