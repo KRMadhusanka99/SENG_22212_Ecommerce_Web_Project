@@ -22,7 +22,7 @@ const Contact = () => {
   }
 
   return (
-    <div className="outer">
+    <div className="outer1">
     <div className="main1">
        
      <div className="sub-main1">
