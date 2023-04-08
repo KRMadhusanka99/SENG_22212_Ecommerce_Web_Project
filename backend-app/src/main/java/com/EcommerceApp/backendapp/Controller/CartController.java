@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
 @RequestMapping("/cart")
+@CrossOrigin
 public class CartController {
     @Autowired
     private final ShoppingCartService shoppingCartService;
@@ -44,7 +45,7 @@ public class CartController {
     }
 
     @PostMapping("/add/items")
-    public ResponseEntity<String> addCartItem(@RequestParam Long cartId, @RequestParam long productId, @RequestParam int quantity) {
+    public ResponseEntity<String> addCartItem(@RequestParam Long cartId, @RequestParam Long productId, @RequestParam int quantity) {
         shoppingCartService.addCartItem(cartId,productId, quantity);
         return ResponseEntity.ok("Item added to cart");
     }

@@ -9,7 +9,7 @@ public interface ShoppingCartService {
     ShoppingCart createCart(Integer userId);
     ShoppingCart getCartById(Long cartId);
     List<CartItem> getCartItems(ShoppingCart shoppingCart);
-    String addCartItem(long cartId, Long productId, int quantity);
+    String addCartItem(Long cartId, Long productId, int quantity);
     void deleteCartItem(Long cartId, Long cartItemId);
     void clearCart(Long cartId);
     ShoppingCart getCart(int userId);

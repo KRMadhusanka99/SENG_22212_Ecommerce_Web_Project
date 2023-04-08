@@ -66,7 +66,7 @@ public class ProductServiceImpl implements ProductService{
         return products;
     }
 
-    public List<Product> searchProductsByCategory(Long categoryId) {
+    public List<Product> viewByCategory(Long categoryId) {
         return productRepository.findByCategoryId(categoryId);
     }
 }

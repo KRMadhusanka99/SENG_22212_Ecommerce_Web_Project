@@ -50,7 +50,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         return shoppingCart.getItems();
     }
 
-    public String addCartItem(long cartId, Long productId, int quantity) {
+    public String addCartItem(Long cartId, Long productId, int quantity) {
         Optional<ShoppingCart> optionalCart = shoppingCartRepository.findById(cartId);
         Optional<Product> optionalProduct = productRepository.findById(productId);
 

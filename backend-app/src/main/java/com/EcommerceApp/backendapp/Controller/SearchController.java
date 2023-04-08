@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 @Controller
 @RequestMapping("/search")
+@CrossOrigin
 public class SearchController {
     @Autowired
     private ProductService productService;
@@ -28,11 +30,11 @@ public class SearchController {
         return new ResponseEntity<>(productList, HttpStatus.OK);
     }
 
-    @GetMapping("/search_by_category")
-    public ResponseEntity<List<Product>> searchProductsByCategory(@RequestParam long id) {
+    @GetMapping("/viewByCategory")
+    public ResponseEntity<List<Product>> viewByCategory(@RequestParam long id) {
         List<Product> productList = null;
 
-        productList = productService.searchProductsByCategory(id);
+        productList = productService.viewByCategory(id);
 
         return new ResponseEntity<>(productList, HttpStatus.OK);
     }

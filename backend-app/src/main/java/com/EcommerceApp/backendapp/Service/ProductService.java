@@ -10,6 +10,6 @@ public interface ProductService {
     Product addProduct(Product product, Long categoryId);
     boolean deleteProductById(Long id);
     List<Product> searchProductsByName(String query);
-    List<Product> searchProductsByCategory(Long categoryId);
+    List<Product> viewByCategory(Long categoryId);
     Product updateProduct(Long id, Product new_product);
 }
