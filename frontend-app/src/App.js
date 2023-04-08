@@ -64,10 +64,10 @@ function App() {
       <Routes>
             <Route path="/cart" element={<><Header/><Cart/></>}/>
             <Route path="/checkout" element={<><Header/><PaymentCheckout/><Footer/></>}/>
-            <Route path="/login" element={<><Header/><Login/><Footer/></>}/>
+            <Route path="/login" element={<><Header/><div className='main'><Login/></div><Footer/></>}/>
             <Route path="/item" element={<><Header/><Item/><Footer/></>}/>
-            <Route path="/signup" element={<><Header/><SignUp/><Footer/></>}/>
-            <Route path="/contact" element={<><Header/><Contact/><Footer/></>}/>
+            <Route path="/signup" element={<><Header/><div className='main'><SignUp/></div><Footer/></>}/>
+            <Route path="/contact" element={<><Header/><div className='main'><Contact/></div><Footer/></>}/>
             <Route path="/singleProduct/:id" element={<><Header/><SingleProduct/><Footer/></>}/>
             <Route path="/categoryPage/:category" element={<><Header/><CategoryPage/><Footer/></>} />
             <Route path="/searchProduct/:searchQuery" element={<><Header/><SearchProduct/><Footer/></>} />

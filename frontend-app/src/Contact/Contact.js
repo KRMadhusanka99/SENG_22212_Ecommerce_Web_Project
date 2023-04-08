@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import './Contact.css';
-import Header from '../Header/Header'
-
-const FORM_ENDPOINT = ""; // TODO - fill on the later step
+import '../Login/Login.css';
+const FORM_ENDPOINT = "";
 
 const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -15,28 +13,24 @@ const Contact = () => {
   if (submitted) {
     return (
       <>
+           <div className="box">
         <div className="text-2xl">Thank you!</div>
         <div className="text-md">We'll be in touch soon.</div>
+        </div>
       </>
     );
   }
 
   return (
-    <div className="outer1">
-    <div className="main1">
-       
-     <div className="sub-main1">
-   
-      <div>
+     <div className="box">
      <h1>Contact Us</h1>
-     <div>
     <form
       action={FORM_ENDPOINT}
       onSubmit={handleSubmit}
       method="POST"
       target="_blank"
     >
-      <div className="second-input" >
+      <div className="inputBox" >
         <input
           type="text"
           placeholder="Your name"
@@ -44,7 +38,7 @@ const Contact = () => {
           required
         />
       </div>
-      <div className="second-input">
+      <div className="inputBox">
         <input
           type="email"
           placeholder="Email"
@@ -52,27 +46,17 @@ const Contact = () => {
           required
         />
       </div>
-      <div className="second-input">
+      <div className="inputBox message">
         <textarea
           placeholder="Your message"
           name="message"
-          className="name1"
           required
         />
       </div>
-      <div className="second-input">
-        <button
-          className="b1"
-          type="submit"
-        >
+        <button type="submit">
           Send a message
         </button>
-      </div>
     </form>
-    </div>
-    </div>
-    </div>
-    </div>
     </div>
   );
 };

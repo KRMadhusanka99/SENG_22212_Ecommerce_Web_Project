@@ -3,67 +3,64 @@ import './Login.css';
 import {Link,useNavigate} from 'react-router-dom';
 import {auth} from '../firebase';
 import profile from "../Picture/a.png";
-import email from "../Picture/email.jpg";
+import Email from "../Picture/email.jpg";
 import pass from "../Picture/pass.png";
+import axios from "axios";
 
 
 function Login(){
 
   const history = useNavigate();
-  const [useremail, setUserEmail] = useState('')
-  const [userpassword, setUserPassword] = useState('');
+  const [email, setUserEmail] = useState('')
+  const [password, setUserPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const loginuser = event =>{
-    event.preventDefault()
-    auth.signInWithEmailAndPassword(useremail, userpassword)
-    .then((auth) =>{
-      history('/');
-    })
-    .catch(e => alert(e.message))
-  }
-
-  const signupuser = event =>{
-    event.preventDefault()
-    auth.createUserWithEmailAndPassword(useremail,userpassword)
-    .then(auth =>{
-      history('/');
-    })
-    .catch(e => alert(e.message))
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("/authenticate/login", {
+        email,
+        password
+      });
+      // localStorage.setItem("token", JSON.stringify(response.data));
+      // console.log(localStorage.getItem("token"));
+      console.log(response.data);
+      history('/', { replace: true });
+    } catch (error) {
+      console.log(error.response.data);
+      setErrorMessage(error.response.data.message);
+    }
+  };
 
   return(
-    <div className="main">
-     <div className="sub-main">
-       <div>
-         <div className="imgs">
-           <div className="container-image">
-             <img src={profile} alt="profile" className="profile"/>
-           </div>
-         </div>
-         <div>
+         <div className="box">
            <h1>Login</h1>
-           <div className="second-input">
-            
-          <img src={email} alt="email" className="email"/>
-          <input value={useremail} onChange={event => setUserEmail(event.target.value)} type="email" placeholder="Email address" className="name"/>
-          </div>
-          <div className="second-input">
-          <img src={pass} alt="pass" className="email"/>
-          <input value={userpassword} onChange={event => setUserPassword(event.target.value)} type="password" placeholder="password" className="name"/>
-          
-          </div>
-          <div className="login-button">
-          <button onClick={loginuser} type="submit" className='login-button'>Login</button></div>
-          </div>
-          <div className="button2">
-        <p>By login, you agree to INNOVA's Terms and Conditions</p>
-       {/*} <button onClick={signupuser} className='login-registration'>SignUp</button>*/}
-        <Link to="/signup"><button>Create Account</button></Link></div>
-        </div>
-       </div>
-       
+           <form onSubmit={handleSubmit}>
 
-     </div>
+           <div className="inputBox">
+          <input 
+              value={email} 
+              onChange={(e) => setUserEmail(e.target.value)} 
+              type="email" 
+              onKeyUp={(event) => event.target.setAttribute('value', event.target.value)}              className="name"
+              required/>
+          <label>Email</label>
+          </div>
+          <div className="inputBox">
+          <input 
+              value={password} 
+              onChange={(e) => setUserPassword(e.target.value)} 
+              type="password" 
+              onKeyUp={(event) => event.target.setAttribute('value', event.target.value)}              className="name"
+              required/>
+          <label>Password</label>
+          {errorMessage && <div className="error-alert"><p style={{color:'red'}}>{errorMessage}</p></div>}
+          </div>
+          <button type="submit" className='login-button'>Login</button>
+          </form>
+
+        <p>Don't have an Account? <Link to="/signup">Create Account</Link></p>
+        </div>
     
   );
 }
