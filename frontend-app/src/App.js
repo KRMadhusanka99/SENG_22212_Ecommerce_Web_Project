@@ -30,6 +30,11 @@ import ProductList from './components/Admin/ProductList';
 import BrandList from './components/Admin/BrandList';
 import CategoryList from './components/Admin/CategoryList';
 import Inquiry from './components/Admin/Inquiry';
+import AddAdmin from './components/Admin/AddAdmin';
+import UserList from './components/Admin/UserList';
+import OrderList from './components/Admin/OrderList';
+import AdminProfile from './components/Admin/AdminProfile';
+
 function App() {
 
   const [{loggedinuser, dispatch}] = useStateValue()
@@ -73,6 +78,10 @@ function App() {
             <Route path="/searchProduct/:searchQuery" element={<><Header/><SearchProduct/><Footer/></>} />
             <Route path="/" element={<><Header/><Navbar/><Home/><Footer/></>}/>
             <Route exact path="/admin" element={<AdminSignin/>} />
+            <Route exact path="/admin/addadmin" element={<><AHeader /><main><AddAdmin/></main><AFooter /></>} />
+            <Route exact path="/admin/users" element={<><AHeader /><main><UserList/></main><AFooter /></>} />
+            <Route exact path="/admin/orders" element={<><AHeader /><main><OrderList/></main><AFooter /></>} />
+            <Route exact path="/admin/profile" element={<><AHeader /><main><AdminProfile/></main><AFooter /></>} />
             <Route exact path="/admin/logout" element={<><AHeader /><main><AdminLogout/></main><AFooter /></>} />
             <Route exact path="/admin/dashboard" element={<><AHeader /><main><Dashboard/></main><AFooter /></>} />
             <Route exact path="/admin/add-product" element={<><AHeader /><main><AddProduct/></main><AFooter /></>} />

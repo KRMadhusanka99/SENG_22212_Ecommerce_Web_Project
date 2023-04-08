@@ -1,0 +1,44 @@
+.userlist-container {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+  }
+  
+  .userlist-container h2 {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+  
+  .userlist-container table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .userlist-container table th, .userlist-container table td {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .userlist-container table th {
+    background-color: #f2f2f2;
+    padding: 6px 10px;
+  }
+  
+  .userlist-container table td button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .userlist-container table td button:hover {
+    background-color: #d32f2f;
+  }
+  
