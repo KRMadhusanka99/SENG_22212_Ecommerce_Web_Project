@@ -1,5 +1,6 @@
 import React from 'react';
 import './css/Dashboard.css';
+import {Link} from 'react-router-dom';
 
 function Dashboard() {
 
@@ -23,6 +24,8 @@ function Dashboard() {
           <p>1000</p>
         </div>
       </div>
+      <br/>
+      <div className='add'><Link to="/admin/addadmin" className='add'><button className='add-edit addbtn'>Add Admins</button></Link></div>
       <div className="dashboard-charts">
         <h2>Sales and Income</h2>
       </div>
