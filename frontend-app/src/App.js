@@ -34,6 +34,7 @@ import AddAdmin from './components/Admin/AddAdmin';
 import UserList from './components/Admin/UserList';
 import OrderList from './components/Admin/OrderList';
 import AdminProfile from './components/Admin/AdminProfile';
+import Verify from './Login/Verify';
 
 function App() {
 
@@ -67,6 +68,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
+            <Route path="/verify" element={<Verify/>}/>
             <Route path="/cart" element={<><Header/><Cart/></>}/>
             <Route path="/checkout" element={<><Header/><PaymentCheckout/><Footer/></>}/>
             <Route path="/login" element={<><Header/><div className='main'><Login/></div><Footer/></>}/>
