@@ -1,10 +1,6 @@
 import React,{useState} from 'react';
 import './Login.css';
 import {Link,useNavigate} from 'react-router-dom';
-import {auth} from '../firebase';
-import profile from "../Picture/a.png";
-import Email from "../Picture/email.jpg";
-import pass from "../Picture/pass.png";
 import axios from "axios";
 
 
@@ -14,7 +10,11 @@ function Login(){
   const [email, setUserEmail] = useState('')
   const [password, setUserPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -46,16 +46,19 @@ function Login(){
               required/>
           <label>Email</label>
           </div>
-          <div className="inputBox">
+          <div className="inputBox password">
           <input 
               value={password} 
               onChange={(e) => setUserPassword(e.target.value)} 
-              type="password" 
-              onKeyUp={(event) => event.target.setAttribute('value', event.target.value)}              className="name"
+              type={showPassword ? 'text' : 'password'}              onKeyUp={(event) => event.target.setAttribute('value', event.target.value)}              className="name"
               required/>
           <label>Password</label>
-          {errorMessage && <div className="error-alert"><p style={{color:'red'}}>{errorMessage}</p></div>}
           </div>
+          <p style={{textAlign:'left'}}><input type="checkbox" 
+          name="show" 
+          onClick={toggleShowPassword}
+          value="show"/> Show Password</p>   
+          {errorMessage && <div className="error-alert"><p style={{color:'red'}}>{errorMessage}</p></div>}
           <button type="submit" className='login-button'>Login</button>
           </form>
 
