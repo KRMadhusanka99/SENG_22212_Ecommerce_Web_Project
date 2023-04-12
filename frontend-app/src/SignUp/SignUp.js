@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import '../Login/Login.css';
 import {useNavigate} from 'react-router-dom';
 import axios from "axios";
+import { EyeOutlined,EyeInvisibleOutlined } from '@ant-design/icons';
 
 
 function SignUp(){
@@ -13,6 +14,8 @@ function SignUp(){
   const [lastname, setUserLastName] = useState('');
   const [phonenumber, setPhoneNumber] = useState('');
   const [errorMessage, setErrorMessage] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,6 +36,9 @@ function SignUp(){
       setErrorMessage(error.response.data.message);
     }
   }
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   return(
     <div className="box">
@@ -70,8 +76,12 @@ function SignUp(){
 
           <tr><td colspan="2">
           <div className="inputBox next">
-          <input value={password} onChange={(e) => setUserPassword(e.target.value)} onKeyUp={(event) => event.target.setAttribute('value', event.target.value)} type="password" required/>
-          <label>Password</label></div> </td>
+          <input value={password} onChange={(e) => setUserPassword(e.target.value)} onKeyUp={(event) => event.target.setAttribute('value', event.target.value)} 
+          type={showPassword ? 'text' : 'password'} required/>
+          <label>Password</label></div> </td><td>
+          <span className="showPassword" onClick={toggleShowPassword}>
+            {showPassword ? <div style={{color:'#007bff'}}><EyeOutlined/></div> : <EyeInvisibleOutlined/>}
+          </span></td>
          </tr></table>
          {errorMessage && <div className="error-alert"><p style={{color:'red'}}>{errorMessage}</p></div>}
           <p><input type="checkbox" 
