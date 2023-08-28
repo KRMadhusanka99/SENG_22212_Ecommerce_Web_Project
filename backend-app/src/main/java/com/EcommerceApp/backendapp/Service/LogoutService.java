@@ -1,6 +1,6 @@
 package com.EcommerceApp.backendapp.Service;
 
-import com.EcommerceApp.backendapp.DTO.TokenRepository;
+import com.EcommerceApp.backendapp.Repository.TokenRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;

@@ -1,6 +1,6 @@
-package com.EcommerceApp.backendapp.entity.Token;
+package com.EcommerceApp.backendapp.Entity.Token;
 
-import com.EcommerceApp.backendapp.entity.User;
+import com.EcommerceApp.backendapp.Entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

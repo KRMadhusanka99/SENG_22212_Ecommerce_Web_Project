@@ -1,4 +1,4 @@
-package com.EcommerceApp.backendapp.entity;
+package com.EcommerceApp.backendapp.Entity;
 
 public enum UserRole {
     USER_ROLE,

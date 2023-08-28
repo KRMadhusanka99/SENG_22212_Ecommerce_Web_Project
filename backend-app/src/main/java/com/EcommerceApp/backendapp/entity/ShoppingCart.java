@@ -1,52 +1,28 @@
-package com.EcommerceApp.backendapp.entity;
+package com.EcommerceApp.backendapp.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-
+import java.util.List;
 @Entity
-@Table(name = "shoppingcart")
+@Table(name = "_cart")
 public class ShoppingCart {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Temporal(TemporalType.DATE)
-    private Date date;
-
-    @Transient
-    private Double totalPrice;
-    @Transient
-    private int itemsNumber;
-
-    public Set<CartItem> getCartItem() {
-        return cartItem;
-    }
-
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER )
-    private Set<CartItem> items = new HashSet<CartItem>();
-    private String sessionToken;
-
-    public void setCartItem(Set<CartItem> cartItem) {
-        this.cartItem = cartItem;
-    }
-
-    @OneToMany(cascade = CascadeType.ALL)//, mappedBy = "CartItem"
-    private Set<CartItem> cartItem;
-
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @OneToOne
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
+    @JsonIgnore
+    @OneToMany(mappedBy = "shoppingCart", cascade = CascadeType.ALL)
+    private List<CartItem> items;
 
-    public void setTotalPrice(Double totalPrice) {
-        this.totalPrice = totalPrice;
+    public Long getId() {
+        return id;
     }
 
-    public void setItemsNumber(int itemsNumber) {
-        this.itemsNumber = itemsNumber;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public User getUser() {
@@ -57,86 +33,12 @@ public class ShoppingCart {
         this.user = user;
     }
 
-    public ShoppingCart() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public Double getTotalPrice() {
-        Double sum = 0.0;
-        for(CartItem item : this.items) {
-            sum = sum + item.getProduct().getPrice()*item.getQuantity();
-        }
-        return sum;
-    }
-    public int getItemsNumber() {
-        return this.items.size();
-    }
-
-    public Set<CartItem> getItems() {
+    public List<CartItem> getItems() {
         return items;
     }
 
-    public void setItems(Set<CartItem> items) {
+    public void setItems(List<CartItem> items) {
         this.items = items;
-    }
-
-    public String getSessionToken() {
-        return sessionToken;
-    }
-
-    public void setSessionToken(String sessionToken) {
-        this.sessionToken = sessionToken;
-    }
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        result = prime * result + ((items == null) ? 0 : items.hashCode());
-        result = prime * result + ((sessionToken == null) ? 0 : sessionToken.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        ShoppingCart other = (ShoppingCart) obj;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
-        if (items == null) {
-            if (other.items != null)
-                return false;
-        } else if (!items.equals(other.items))
-            return false;
-        if (sessionToken == null) {
-            if (other.sessionToken != null)
-                return false;
-        } else if (!sessionToken.equals(other.sessionToken))
-            return false;
-        return true;
     }
 
 }

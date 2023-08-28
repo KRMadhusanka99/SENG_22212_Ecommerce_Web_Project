@@ -1,6 +1,6 @@
-package com.EcommerceApp.backendapp.entity;
+package com.EcommerceApp.backendapp.Entity;
 
-import com.EcommerceApp.backendapp.entity.Token.Token;
+import com.EcommerceApp.backendapp.Entity.Token.Token;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -70,10 +70,5 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
-    @OneToOne(mappedBy = "user")
-    private ShoppingCart shoppingCart;
-    @OneToMany(mappedBy = "user")
-    private List<Order> orders;
 }
 

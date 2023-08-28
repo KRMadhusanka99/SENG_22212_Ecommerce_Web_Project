@@ -1,6 +1,6 @@
 package com.EcommerceApp.backendapp.Configuration;
 
-import com.EcommerceApp.backendapp.DTO.TokenRepository;
+import com.EcommerceApp.backendapp.Repository.TokenRepository;
 import com.EcommerceApp.backendapp.Service.JwtService;
 
 import jakarta.servlet.FilterChain;

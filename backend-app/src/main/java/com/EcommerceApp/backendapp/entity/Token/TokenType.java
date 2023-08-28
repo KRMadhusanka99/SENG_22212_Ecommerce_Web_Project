@@ -1,4 +1,4 @@
-package com.EcommerceApp.backendapp.entity.Token;
+package com.EcommerceApp.backendapp.Entity.Token;
 
 public enum TokenType {
     BEARER

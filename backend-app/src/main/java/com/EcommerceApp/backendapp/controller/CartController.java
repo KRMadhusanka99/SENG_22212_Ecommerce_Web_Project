@@ -1,70 +1,68 @@
-package com.EcommerceApp.backendapp.controller;
+package com.EcommerceApp.backendapp.Controller;
 
+import com.EcommerceApp.backendapp.Entity.ShoppingCart;
+import com.EcommerceApp.backendapp.Entity.CartItem;
 import com.EcommerceApp.backendapp.Service.ShoppingCartService;
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.UUID;
-
-@Controller
+import java.util.List;
+@RestController
+@RequestMapping("/cart")
+@CrossOrigin
 public class CartController {
-
-
     @Autowired
-    private ShoppingCartService shoppingCartService;
+    private final ShoppingCartService shoppingCartService;
 
-    // Add cart button
-    @PostMapping("/addToCart")
-    public String addToCart(HttpServletRequest request, Model model, @RequestParam("id") Long id,
-                            @RequestParam("quantity") int quantity) {
+    public CartController(ShoppingCartService shoppingCartService) {
+        this.shoppingCartService = shoppingCartService;
+    }
 
-        // session Token
-        String sessionToken = (String) request.getSession(true).getAttribute("sessiontToken");
-        if (sessionToken == null) {//todo factory pat
+    @PostMapping("/create")
+    public ResponseEntity<ShoppingCart> createCart(@RequestParam Integer user_id) {
+        ShoppingCart shoppingCart = shoppingCartService.createCart(user_id);
+        return ResponseEntity.ok(shoppingCart);
+    }
 
-            sessionToken = UUID.randomUUID().toString();
-            request.getSession().setAttribute("sessiontToken", sessionToken);
-            shoppingCartService.addShoppingCartFirstTime(id, sessionToken, quantity);
-        } else {
-            shoppingCartService.addToExistingShoppingCart(id, sessionToken, quantity);
+    @GetMapping("/get")
+    public ResponseEntity<ShoppingCart> getCartById(@RequestParam Long id) {
+        ShoppingCart shoppingCart = shoppingCartService.getCartById(id);
+        if (shoppingCart == null) {
+            return ResponseEntity.notFound().build();
         }
-        return "redirect:/";
+        return ResponseEntity.ok(shoppingCart);
     }
 
-    // Shopping cart functions...
-
-    @GetMapping("/shoppingCart")
-    public String showShoppingCartView(HttpServletRequest request, Model model) {
-
-        return "shoppingCart";
+    @GetMapping("/get/items")
+    public ResponseEntity<List<CartItem>> getCartItems(@RequestParam Long cartId) {
+        ShoppingCart shoppingCart = shoppingCartService.getCartById(cartId);
+        if (shoppingCart == null) {
+            return ResponseEntity.notFound().build();
+        }
+        List<CartItem> cartItems = shoppingCartService.getCartItems(shoppingCart);
+        return ResponseEntity.ok(cartItems);
     }
 
-    @PostMapping("/updateShoppingCart")
-    public String updateCartItem(@RequestParam("item_id") Long id,
-                                 @RequestParam("quantity") int quantity) {
-
-        shoppingCartService.updateShoppingCartItem(id,quantity);
-        return "redirect:shoppingCart";
-    }
-    @GetMapping("/removeCartItem/{id}")
-    public String removeItem(@PathVariable("id") Long id, HttpServletRequest request) {
-        String sessionToken = (String) request.getSession(false).getAttribute("sessiontToken");
-        System.out.println("got here ");
-        shoppingCartService.removeCartIemFromShoppingCart(id,sessionToken);
-        return "redirect:/shoppingCart";
+    @PostMapping("/add/items")
+    public ResponseEntity<String> addCartItem(@RequestParam Long cartId, @RequestParam Long productId, @RequestParam int quantity) {
+        shoppingCartService.addCartItem(cartId,productId, quantity);
+        return ResponseEntity.ok("Item added to cart");
     }
 
-    @GetMapping("/clearShoppingCart")
-    public String clearShoopiString(HttpServletRequest request) {
-        String sessionToken = (String) request.getSession(false).getAttribute("sessiontToken");
-        request.getSession(false).removeAttribute("sessiontToken");
-        shoppingCartService.clearShoppingCart(sessionToken);
-        return "redirect:/shoppingCart";
+    @DeleteMapping("/delete/items")
+    public ResponseEntity<?> deleteCartItem(@RequestParam Long cartId, @RequestParam Long itemId) {
+        shoppingCartService.deleteCartItem(cartId,itemId);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/clear")
+    public ResponseEntity<?> clearCart(@RequestParam Long id) {
+        ShoppingCart shoppingCart = shoppingCartService.getCartById(id);
+        if (shoppingCart == null) {
+            return ResponseEntity.notFound().build();
+        }
+        shoppingCartService.clearCart(id);
+        return ResponseEntity.ok().build();
     }
 }

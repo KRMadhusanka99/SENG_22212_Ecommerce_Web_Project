@@ -1,7 +1,7 @@
-package com.EcommerceApp.backendapp.controller;
+package com.EcommerceApp.backendapp.Controller;
 
-import com.EcommerceApp.backendapp.DTO.ProductRepository;
-import com.EcommerceApp.backendapp.entity.Product;
+import com.EcommerceApp.backendapp.Repository.ProductRepository;
+import com.EcommerceApp.backendapp.Entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,20 +10,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
-// class for single page web application
+
 @Controller
 public class GetViewController {
     @Autowired
     private ProductRepository productRepository;
 
-    @RequestMapping(value = "/addProduct",method = RequestMethod.GET)//url(value): in api/ajaxfetch.js
-    @ResponseBody//return html page
+    @RequestMapping(value = "/addProduct",method = RequestMethod.GET)
+    @ResponseBody
     public ModelAndView returnAddProduct()
     {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("addProduct");//html file name add product form page
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("/add");
 
-        return modelAndView;
+        return mv;
 
     }
 
@@ -31,11 +31,11 @@ public class GetViewController {
     @ResponseBody
     public ModelAndView returnListProduct()
     {
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView mv = new ModelAndView();
         List<Product> products = productRepository.findAll();
-        modelAndView.setViewName("/list");
-        modelAndView.addObject("products", products);// html products list page
-        return modelAndView;
+        mv.setViewName("/list");
+        mv.addObject("products", products);
+        return mv;
 
     }
 }

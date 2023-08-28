@@ -1,26 +1,29 @@
-package com.EcommerceApp.backendapp.entity;
+package com.EcommerceApp.backendapp.Entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
-
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
 @Entity
-@Table(name = "orders")
+@Table(name = "_orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "order_id")
     private Long id;
-    private Date orderDate;
-    private Date deliveryDate;
-    private double totalPrice;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    private LocalDate orderDate;
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderItem> orderItems = new ArrayList<>();
+
+    private String address;
+
+    private Double totalAmount;
 
     public Long getId() {
         return id;
@@ -28,54 +31,6 @@ public class Order {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Date getOrderDate() {
-        return orderDate;
-    }
-
-    public void setOrderDate(Date orderDate) {
-        this.orderDate = orderDate;
-    }
-
-    public Date getDeliveryDate() {
-        return deliveryDate;
-    }
-
-    public void setDeliveryDate(Date deliveryDate) {
-        this.deliveryDate = deliveryDate;
-    }
-
-    public double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
-    public double getShippingFee() {
-        return shippingFee;
-    }
-
-    public void setShippingFee(double shippingFee) {
-        this.shippingFee = shippingFee;
-    }
-
-    public String getOrderStatus() {
-        return orderStatus;
-    }
-
-    public void setOrderStatus(String orderStatus) {
-        this.orderStatus = orderStatus;
-    }
-
-    public String getNotes() {
-        return notes;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
     }
 
     public User getUser() {
@@ -86,21 +41,40 @@ public class Order {
         this.user = user;
     }
 
-    public List<OrderDetail> getOrderDetailList() {
-        return orderDetailList;
+    public LocalDate getOrderDate() {
+        return orderDate;
     }
 
-    public void setOrderDetailList(List<OrderDetail> orderDetailList) {
-        this.orderDetailList = orderDetailList;
+    public void setOrderDate(LocalDate orderDate) {
+        this.orderDate = orderDate;
     }
 
-    private double shippingFee;
-    private String orderStatus;
-    private String notes;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "User_id", referencedColumnName = "id")
-    private User user;
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
+    }
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
-    private List<OrderDetail> orderDetailList;
+    public void setOrderItems(List<OrderItem> orderItems) {
+        this.orderItems = orderItems;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Double getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount() {
+        Double totalAmount = (double) 0;
+        for (OrderItem item : this.orderItems) {
+            totalAmount += item.getProductPrice();
+        }
+        this.totalAmount = totalAmount;
+    }
+    //todo; payment
 }

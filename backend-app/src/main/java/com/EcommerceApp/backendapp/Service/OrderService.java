@@ -1,11 +1,13 @@
 package com.EcommerceApp.backendapp.Service;
 
-import com.EcommerceApp.backendapp.entity.ShoppingCart;
+import com.EcommerceApp.backendapp.Entity.Order;
+import com.EcommerceApp.backendapp.Entity.ShoppingCart;
+import com.EcommerceApp.backendapp.Entity.User;
+
+import java.util.List;
 
 public interface OrderService {
-    void saveOrder(ShoppingCart cart);
-
-    void acceptOrder(Long id);
-
-    void cancelOrder(Long id);
+    Order placeOrder(User user, ShoppingCart cart, String address);
+    List<Order> getAllOrders();
+    void deleteOrderById(Long id);
 }

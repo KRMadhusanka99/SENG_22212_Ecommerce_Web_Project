@@ -1,100 +1,59 @@
-package com.EcommerceApp.backendapp.controller;
+package com.EcommerceApp.backendapp.Controller;
 
+import com.EcommerceApp.backendapp.Entity.Product;
 import com.EcommerceApp.backendapp.Service.ProductService;
-import com.EcommerceApp.backendapp.entity.Category;
-import com.EcommerceApp.backendapp.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
 @Controller
+@RequestMapping("/product")
+@CrossOrigin
 public class ProductController {
 
     @Autowired
     private ProductService productService;
-    // list all products
-    @GetMapping("/listProducts")
-    public String showExampleView(Model model)
-    {
-        List<Product> products = productService.getAllProduct();
-        model.addAttribute("products", products);
-        return "listProducts";
-    }
-    @GetMapping("/Admin-Product")
-    public String showAddProduct(Model model)
-    {
-        model.addAttribute("category", new Category());
-        model.addAttribute("categories", productService.getAllCategories());
-        model.addAttribute("products", productService.getAllProduct());
-        return "Admin/product";
+
+    @GetMapping("/view")//list products
+    public ResponseEntity<List<Product>> getAllProducts() {
+        List<Product> products = productService.getAllProducts();
+        return ResponseEntity.ok(products);
     }
 
-    @PostMapping("/addProduct")
-    public String saveProduct(@RequestParam("file") MultipartFile file,
-                              @RequestParam("pname") String name,
-                              @RequestParam("price") double price,
-                              @RequestParam("desc") String desc,
-                              @RequestParam("quantity") int quantity,
-                              @RequestParam("brand") String brand,
-                              @RequestParam("categories") String categories
-                              )
-    {
-        productService.saveProductToDB(file, name, desc,quantity, price,brand,categories);
-        return "listProducts ";
-    }
-    // delete product by id
-    @GetMapping("/Admin/deleteProd/{id}")
-    public String deleteProduct(@PathVariable("id") Long id)
-    {
-
-        productService.deleteProductById(id);
-        return "Product deleted";// redirect the page
+    @GetMapping("/getProduct")//view product in detail
+    public ResponseEntity<Product> getProductById(@RequestParam Long id) {
+        Product product = productService.getProductById(id);
+        if (product == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(product);
     }
 
-    // Admin change product details
-    @PostMapping("/Admin/changeName")
-    public String changePname(@RequestParam("id") Long id,
-                              @RequestParam("newPname") String name)
-    {
-        productService.chageProductName(id, name);
-        return "Name changed";
-//        return "redirect:/Admin/index";
-    }
-    @PostMapping("/Admin/changeDescription")
-    public String changeDescription(@RequestParam("id") Long id ,
-                                    @RequestParam("newDescription") String description)
-    {
-        productService.changeProductDescription(id, description);
-        return "Desc changed";
-//        return "redirect:/Admin/index";
+    @PostMapping("/addProduct")//add products
+    public ResponseEntity<Product> addProduct(@RequestBody Product product , @RequestParam Long category_id) {
+        productService.addProduct(product,category_id);
+        return ResponseEntity.status(HttpStatus.CREATED).body(product);
     }
 
-    @PostMapping("/Admin/changePrice")
-    public String changePrice(@RequestParam("id") Long id ,
-                              @RequestParam("newPrice") Double price)
-    {
 
-        productService.changeProductPrice(id, price);
-        return "price changed";
-//        return "redirect:/Admin/index";
+    @DeleteMapping("/deleteProduct")//delete product by id
+    public ResponseEntity<Void> deleteProduct(@RequestParam Long id) {
+        boolean deleted = productService.deleteProductById(id);
+        if (!deleted) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.noContent().build();
     }
 
-    @PostMapping("/Admin/addCategory")
-    public String addCategory(@ModelAttribute Category category , Model model) {
-        productService.saveCategory(category);
-        return "redirect:/Admin/product";
+    @PutMapping("/updateProduct")//update product details by product id
+    public ResponseEntity<Product> updateProduct(@RequestParam Long product_id, @RequestBody Product product){
+        Product updatedProduct = productService.updateProduct(product_id,product);
+        return new ResponseEntity<Product>(updatedProduct,HttpStatus.ACCEPTED);
     }
-<<<<<<< HEAD
-    @PostMapping("/Admin/addPictureToP")
-    public String addImageToProduct(@RequestParam("file") MultipartFile file,
-                                    @RequestParam("product_id") Long id ) {
-        productService.addImageToProduct(file,id);
-        return "redirect:/Admin/product";
-    }
-=======
->>>>>>> main
+
+
 }
